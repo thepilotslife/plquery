@@ -2,10 +2,10 @@
 
 require('db.php');
 
-$s = $db->prepare('select date_format(a.td,"%m-%d") as tday, max(a.c) as p, avg(a.c) as av from 
+$s = $db->prepare('select date_format(a.td,"%b %d") as tday, max(a.c) as p, avg(a.c) as av from 
 (select date(from_unixtime(t.t)) as td, count(t.t) as c from t 
-where date(from_unixtime(t.t)) != DATE(NOW()) and date(from_unixtime(t.t)) >= DATE(NOW() - INTERVAL 91 DAY) 
-group by t.t) as a group by tday');
+where date(from_unixtime(t.t)) != DATE(NOW()) and date(from_unixtime(t.t)) >= DATE(NOW() - INTERVAL 91 DAY) group by t.t) as a 
+group by tday order by a.td asc');
 
 $peakvalues = array();
 $avgvalues = array();
