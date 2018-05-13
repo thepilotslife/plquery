@@ -32,7 +32,7 @@ $settings = array(
   'graph_title_position' => 'top',
   'graph_title_font_weight' => 'bold',
   'label_x' => $t,
-  'grid_division_h' => $datecount / 8,
+  'grid_division_h' => $datecount / 13,
   'grid_show_subdivisions' => true,
 );
  
