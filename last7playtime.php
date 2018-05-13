@@ -2,7 +2,8 @@
 
 require('db.php');
 
-$s = $db->prepare('select p.n, count(p.i)*5/60 as time from t join p on t.i = p.i where t > unix_timestamp() - 86400*7 group by t.i order by time desc limit 20');
+$s = $db->prepare('select p.n, count(p.i)*5/60 as time from t join p on t.i = p.i 
+where t > unix_timestamp() - 86400*7 group by t.i order by time desc limit 20');
 $s->execute();
 $d = $s->fetchAll();
 

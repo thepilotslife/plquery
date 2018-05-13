@@ -2,7 +2,8 @@
 
 require('db.php');
 
-$s = $db->prepare('select date_format(date(from_unixtime(a.t)),"%y-%m-%d") as tday, max(a.c) as p, avg(a.c) as av from (select t.t, count(t.t) as c from t group by t.t) as a group by tday');
+$s = $db->prepare('select date_format(date(from_unixtime(a.t)),"%y-%m-%d") as tday, max(a.c) as p, avg(a.c) as av from 
+(select t.t, count(t.t) as c from t group by t.t) as a group by tday');
 
 $peakvalues = array();
 $avgvalues = array();

@@ -2,7 +2,8 @@
 
 require('db.php');
 
-$s = $db->prepare('select date_format(date(from_unixtime(t.t)),"%a") as dow, count(t.t) tot from t group by dow');
+$s = $db->prepare('select date_format(date(from_unixtime(t.t)),"%a") as dow, count(t.t) 
+tot from t group by dow');
 
 $total = 0;
 $dow = array();

@@ -2,7 +2,8 @@
 
 require('db.php');
 
-$s = $db->prepare('select p.n, max(t.s)-min(t.s) as score from t join p on t.i = p.i where t > unix_timestamp() - 86400*7 and t.s > 0 group by t.i order by score desc limit 20');
+$s = $db->prepare('select p.n, max(t.s)-min(t.s) as score from t join p on t.i = p.i 
+where t > unix_timestamp() - 86400*7 and t.s > 0 group by t.i order by score desc limit 20');
 $s->execute();
 $d = $s->fetchAll();
 
