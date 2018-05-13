@@ -118,4 +118,4 @@ $d = <<<D
 </svg>
 D;
 
-file_put_contents('signature.svg', $d);
+echo $d;
