@@ -26,16 +26,16 @@ $pack .= 'c';
 $sock = @fsockopen('udp://'.$ip, $port, $errno, $errstr, 15);
 if ($sock === false) {
 	//die('down\n');
-	exit();
+	exit(1);
 }
 if (@fwrite($sock, $pack) === false) {
 	//die('down\n');
-	exit();
+	exit(1);
 }
 $res = @fread($sock, 2048);
 if ($res === false) {
 	//die('down\n');
-	exit();
+	exit(1);
 }
 $res = str_split($res);
 @fclose($sock);
@@ -43,7 +43,7 @@ $res = str_split($res);
 if (count($res) < 12) {
 	//echo(count($res) . ' ');
 	//die('wtf\n');
-	exit();
+	exit(1);
 }
 
 $stmtgetid = $db->prepare('SELECT i FROM p WHERE n=?');
