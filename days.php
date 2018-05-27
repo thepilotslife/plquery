@@ -6,7 +6,7 @@ $s = $db->prepare('select
 date_format(d,"%a") as dow, count(t) as tot
 from (select t.t, date(from_unixtime(t.t)) as d,
 (select date(from_unixtime(min(t.t))) from t) as m from t) as t
-where d < date_sub(now(), interval weekday(d) day)
+where d < date_sub(curdate(), interval weekday(d) day)
 and d > date_add(m, interval (6-weekday(m)) day)
 group by dow');
 

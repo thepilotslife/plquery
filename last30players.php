@@ -4,7 +4,7 @@ require('db.php');
 
 $s = $db->prepare('select date_format(a.td,"%d %b") as tday, max(a.c) as p, avg(a.c) as av from 
 (select date(from_unixtime(t.t)) as td, count(t.t) as c from t 
-where DATE(from_unixtime(t.t)) != DATE(NOW()) and DATE(from_unixtime(t.t)) >= DATE(NOW() - INTERVAL 35 DAY) group by t.t) as a 
+where DATE(from_unixtime(t.t)) != curdate() and DATE(from_unixtime(t.t)) >= DATE(curdate() - INTERVAL 35 DAY) group by t.t) as a 
 group by tday order by a.td asc');
 
 $peakvalues = array();
