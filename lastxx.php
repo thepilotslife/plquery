@@ -16,13 +16,16 @@ if ($lastday != '') {
 	// this may not work well when db/php use different language to format
 	// dates...
 	$safeguard = 30;
-	$__t = date($dformat, $_t);
 	$misseddates = array();
-	while ($__t != $lastday && $safeguard-- > 0) {
-		$misseddates[] = $__t;
+	do {
 		$_t -= 3600 * 24;
 		$__t = date($dformat, $_t);
-	}
+		if ($__t == $lastday) {
+			break;
+		}
+		$misseddates[] = $__t;
+	} while($safeguard-- > 0);
+
 	while (count($misseddates) > 0) {
 		$__t = array_pop($misseddates);
 		$peakvalues[$__t] = 0;
