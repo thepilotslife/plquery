@@ -26,6 +26,7 @@ if ($lastday != '') {
 		$misseddates[] = $__t;
 	} while($safeguard-- > 0);
 
+	$datecount += count($misseddates);
 	while (count($misseddates) > 0) {
 		$__t = array_pop($misseddates);
 		$peakvalues[$__t] = 0;
