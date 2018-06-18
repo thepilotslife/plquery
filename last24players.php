@@ -46,8 +46,8 @@ if (count($values) == 0) {
 
 $_t = $prev;
 while (count($values) < 288) {
-	$t += 300;
-	if ($t > time()) {
+	$_t += 300;
+	if ($_t > time()) {
 		break;
 	}
 	$values[date('H:i', $_t)] = 0;
@@ -56,8 +56,8 @@ while (count($values) < 288) {
 
 $_t = $min;
 while (count($values) < 288) {
-	$t -= 300;
-	$values[date('H:i', $_t)] = 0;
+	$_t -= 300;
+	$values = array(date('H:i', $_t) => 0) + $values;
 	$errcount++;
 }
 
