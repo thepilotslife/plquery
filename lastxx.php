@@ -3,14 +3,19 @@
 $peakvalues = array();
 $avgvalues = array();
 $lastday = '';
+$firstday = '';
 $datecount = 0;
 $s->execute();
 while (($r = $s->fetch()) !== false) {
+	if ($firstday == '') {
+		$firstday = $r->p;
+	}
 	$peakvalues[$r->tday] = $r->p;
 	$avgvalues[$r->tday] = $r->av;
 	$datecount++;
 	$lastday = $r->tday;
 }
+/*
 if ($lastday != '') {
 	$_t = time();
 	// this may not work well when db/php use different language to format
@@ -33,4 +38,22 @@ if ($lastday != '') {
 		$avgvalues[$__t] = 0;
 	}
 }
-$values = array($peakvalues, $avgvalues);
+*/
+$_start = $firstdatapoint;
+$_today = time();
+$_peakvalues = array();
+$_avgvalues = array();
+lastxx_l:
+$_t = date($dformat, $_start);
+if (array_key_exists($_t, $peakvalues)) {
+	$_peakvalues[$_t] = $peakvalues[$_t];
+	$_avgvalues[$_t] = $avgvalues[$_t];
+} else {
+	$_peakvalues[$_t] = 0;
+	$_avgvalues[$_t] = 0;
+}
+$_start += 3600*24;
+if ($_start < $_today) {
+	goto lastxx_l;
+}
+$values = array($_peakvalues, $_avgvalues);

@@ -4,6 +4,9 @@ set_time_limit(3);
 
 require('db.php');
 
+$q = $db->query('select min(t.t) as m from t');
+$firstdatapoint = $q->fetch()->m;
+$q->closeCursor();
 $s = $db->prepare('select date_format(date(from_unixtime(a.t)),"%d %b %y") as tday, max(a.c) as p, avg(a.c) as av from 
 (select t.t, count(t.t) as c from t where date(from_unixtime(t.t)) != curdate() group by t.t) as a 
 group by tday order by a.t asc');
