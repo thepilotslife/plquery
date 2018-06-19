@@ -39,11 +39,14 @@ if ($lastday != '') {
 	}
 }
 */
+
+$datecount = 0;
 $_start = $firstdatapoint;
 $_today = time();
 $_peakvalues = array();
 $_avgvalues = array();
 lastxx_l:
+$datecount++;
 $_t = date($dformat, $_start);
 if (array_key_exists($_t, $peakvalues)) {
 	$_peakvalues[$_t] = $peakvalues[$_t];
