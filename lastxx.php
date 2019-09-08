@@ -11,7 +11,7 @@ while (($r = $s->fetch()) !== false) {
 		$firstday = $r->p;
 	}
 	$peakvalues[$r->tday] = $r->p;
-	$avgvalues[$r->tday] = $r->av;
+	$avgvalues[$r->tday] = $r->sm / 288; // (check every 5m)
 	$datecount++;
 	$lastday = $r->tday;
 }

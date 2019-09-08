@@ -9,7 +9,7 @@ $q = $db->query('select min(t.t) as m from t where ' . $minday);
 $firstdatapoint = $q->fetch()->m;
 $firstdatapoint += 3600*24; // for some reason..
 $q->closeCursor();
-$s = $db->prepare('select date_format(a.td,"%d %b") as tday, max(a.c) as p, avg(a.c) as av from 
+$s = $db->prepare('select date_format(a.td,"%d %b") as tday, max(a.c) as p, sum(a.c) as sm from 
 (select date(from_unixtime(t.t)) as td, count(t.t) as c from t 
 where date(from_unixtime(t.t)) != curdate() and ' . $minday . ' group by t.t) as a 
 group by tday order by a.td asc');
