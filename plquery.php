@@ -7,6 +7,7 @@ $stmt = $db->prepare('SET NAMES utf8');
 $stmt->execute();
 
 $ip = "142.44.161.46";
+$ip = '94.16.120.182';
 $port = 7777;
  
 $ipparts = explode('.', $ip);
