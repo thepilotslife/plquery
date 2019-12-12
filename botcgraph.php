@@ -55,7 +55,7 @@ foreach ($vals as $k => $_vals) {
   $idx = 0;
   for ($i = 0; $i < 100; $i++) {
     if ($i == 99) {
-      $v[] = $_vals[count($_vals)-1];
+      $values[$k][] = $_vals[count($_vals)-1];
     } else {
       $t = $min + ($max - $min) * $i / 100;
       while ($times[$idx + 1] < $t) {
