@@ -74,7 +74,7 @@ $settings = array(
   'axis_font'         => 'Tahoma',  'axis_font_size'     => 10,
   'grid_colour'       => '#666',    'label_colour'       => '#000',
   'pad_right'         => 10,        'pad_left'           => 10,
-  'fill_under'        => true,      'fill_opacity'       => .2,
+  'fill_under'        => true,      'fill_opacity'       => .08,
   'marker_size'       => 3,
   'line_stroke_width' => 1,
   'graph_title' => 'company hauls during BOTC',
